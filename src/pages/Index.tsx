@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
-import { PawPrint, Trees, Satellite, Menu, X, Youtube, Instagram, ChevronDown } from "lucide-react"
+import { Users, Heart, Award, Menu, X, Youtube, Instagram, ChevronDown } from "lucide-react"
 import { AnimatedText } from "@/components/animated-text"
-import { CustomDroneIcon } from "@/components/drone-icon"
 import { WorldMap } from "@/components/world-map"
 import { experiences } from "@/lib/experience-data"
 import type { Experience } from "@/lib/experience-data"
+import Icon from "@/components/ui/icon"
 
 function AnimatedCounter({ value, suffix = "" }: { value: string; suffix?: string }) {
   const [displayValue, setDisplayValue] = useState("0")
@@ -48,7 +48,7 @@ function AnimatedCounter({ value, suffix = "" }: { value: string; suffix?: strin
   )
 }
 
-export default function VerdantPage() {
+export default function SitisPage() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
@@ -64,7 +64,7 @@ export default function VerdantPage() {
   const heroRef = useRef<HTMLDivElement>(null)
   const observerRef = useRef<IntersectionObserver | null>(null)
 
-  const dynamicWords = ["леса", "природу", "животных", "экосистемы", "биоразнообразие", "дикую жизнь", "среду обитания"]
+  const dynamicWords = ["людей", "общество", "молодёжь", "будущее", "инициативы", "добровольцев", "сообщества"]
 
   useEffect(() => {
     const wordInterval = setInterval(() => {
@@ -159,7 +159,7 @@ export default function VerdantPage() {
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="text-lg md:text-xl font-semibold font-mono hover:text-pink-400 transition-colors duration-300"
             >
-              VERDANT
+              СИТИС
             </button>
 
             <nav className="hidden md:flex items-center gap-8">
@@ -179,7 +179,7 @@ export default function VerdantPage() {
                 onClick={() => scrollToSection("narrative")}
                 className="text-sm text-[#A7ABB3] hover:text-[#F2F3F5] transition-colors duration-300"
               >
-                Технологии
+                Направления
               </button>
               <button
                 onClick={() => scrollToSection("faq")}
@@ -225,7 +225,7 @@ export default function VerdantPage() {
               onClick={() => scrollToSection("narrative")}
               className="font-serif text-5xl md:text-7xl font-light text-[#F2F3F5] hover:text-pink-400 transition-colors duration-300"
             >
-              Технологии
+              Направления
             </button>
             <button
               onClick={() => scrollToSection("faq")}
@@ -278,21 +278,24 @@ export default function VerdantPage() {
                   wordFade ? "opacity-100 blur-0" : "opacity-0 blur-lg"
                 }`}
               >
-                Защитим <AnimatedText key={dynamicWordIndex} text={dynamicWords[dynamicWordIndex]} delay={0} />
+                Поддержим <AnimatedText key={dynamicWordIndex} text={dynamicWords[dynamicWordIndex]} delay={0} />
               </span>
               <span className="block stagger-reveal text-7xl font-light md:text-8xl" style={{ animationDelay: "90ms" }}>
-                в масштабе
+                вместе
               </span>
             </h1>
             <p
               className="text-[#A7ABB3] text-base md:text-lg max-w-[520px] mx-auto mb-8 leading-relaxed stagger-reveal text-white"
               style={{ animationDelay: "180ms" }}
             >
-              Мониторинг лесов в реальном времени с помощью ИИ. Обнаружение угроз, отслеживание биоразнообразия, сохранение природы для будущих поколений.
+              АНО Центр Общественных Инициатив «Ситис» — объединяем людей, развиваем гражданское общество и реализуем социальные проекты по всей России.
             </p>
             <div className="stagger-reveal" style={{ animationDelay: "270ms" }}>
-              <Button className="glass-button px-8 py-6 text-base rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 text-white">
-                Начать защиту
+              <Button
+                onClick={() => scrollToSection("cta")}
+                className="glass-button px-8 py-6 text-base rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 text-white"
+              >
+                Присоединиться
               </Button>
             </div>
           </div>
@@ -309,7 +312,7 @@ export default function VerdantPage() {
               >
                 <img
                   src="/dashboard-screenshot.png"
-                  alt="Панель мониторинга VERDANT"
+                  alt="Панель управления проектами Ситис"
                   className="object-cover dashboard-image w-full h-auto"
                 />
               </div>
@@ -321,7 +324,7 @@ export default function VerdantPage() {
       <section className="relative py-12 border-y border-white/5 bg-[#0B0C0F] overflow-hidden md:py-8 md:pt-8 md:pb-4">
         <div className="w-full">
           <p className="text-center text-xs md:text-sm uppercase tracking-[0.2em] text-[#A7ABB3] mb-8">
-            Нам доверяют ведущие природоохранные организации
+            Нас поддерживают и с нами сотрудничают
           </p>
           <div className="logo-marquee">
             <div className="logo-marquee-content">
@@ -359,7 +362,7 @@ export default function VerdantPage() {
       <section id="metrics" className="relative py-20 md:py-32 px-4 animate-on-scroll md:pt-24 md:pb-20">
         <div className="max-w-[1120px] w-full mx-auto">
           <h2 className="font-serif text-[32px] leading-[1.15] md:text-[48px] md:leading-[1.1] font-medium mb-6 md:mb-8 text-center text-balance">
-            Природоохранный{" "}
+            Наш{" "}
             <span
               className="inline-block"
               style={{
@@ -371,19 +374,19 @@ export default function VerdantPage() {
             >
               результат
             </span>{" "}
-            в масштабе
+            в цифрах
           </h2>
 
           <p className="text-[#A7ABB3] text-sm md:text-base mb-12 md:mb-16 text-center max-w-[600px] mx-auto leading-relaxed">
-            Нам доверяют природоохранные организации по всему миру. Работаем на технологиях, созданных для природы.
+            Каждый год мы расширяем охват и помогаем всё большему числу людей по всей стране.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 max-w-[800px] mx-auto">
             {[
-              { label: "ЗАЩИЩЕНО ЛЕСОВ", value: "2.4M", desc: "гектаров по всему миру", color: "pink" },
-              { label: "ВИДОВ НА МОНИТОРИНГЕ", value: "12K+", desc: "диких животных", color: "purple" },
-              { label: "ПОГЛОЩЕНО УГЛЕРОДА", value: "18M", desc: "тонн CO2", color: "pink" },
-              { label: "ТОЧНОСТЬ ДЕТЕКЦИИ", value: "99.4%", desc: "обнаружения угроз", color: "purple" },
+              { label: "УЧАСТНИКОВ ПРОГРАММ", value: "5000+", desc: "человек по всей России", color: "pink" },
+              { label: "РЕАЛИЗОВАННЫХ ПРОЕКТОВ", value: "120+", desc: "социальных инициатив", color: "purple" },
+              { label: "РЕГИОНОВ ПРИСУТСТВИЯ", value: "18", desc: "субъектов РФ", color: "pink" },
+              { label: "ЛЕТ РАБОТЫ", value: "10+", desc: "опыта в НКО-секторе", color: "purple" },
             ].map((metric, i) => (
               <div
                 key={i}
@@ -411,21 +414,34 @@ export default function VerdantPage() {
         <div className="text-center mb-12 md:mb-16 px-4">
           <div className="text-[10px] md:text-xs uppercase tracking-[0.15em] text-[#A7ABB3] mb-6 flex items-center justify-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-pink-400 animate-pulse" />
-            ГЛОБАЛЬНЫЙ ОХВАТ
+            ГЕОГРАФИЯ ПРОЕКТОВ
           </div>
-          <h2 className="font-serif text-[32px] leading-[1.15] md:text-[48px] md:leading-[1.1] font-medium mb-6 text-balance">
-            Проекты по всему миру
+          <h2 className="font-serif text-[32px] leading-[1.15] md:text-[48px] md:leading-[1.1] font-medium mb-4 text-balance">
+            Работаем{" "}
+            <span
+              className="inline-block"
+              style={{
+                background: "linear-gradient(135deg, #d9a7c7 0%, #fffcdc 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              по всей стране
+            </span>
           </h2>
-          <p className="text-[#A7ABB3] text-sm md:text-base max-w-[600px] mx-auto leading-relaxed">
-            Мониторинг и защита критически важных лесных экосистем на пяти континентах
+          <p className="text-[#A7ABB3] text-sm md:text-base max-w-[560px] mx-auto leading-relaxed">
+            Наши проекты охватывают ключевые регионы России — от Москвы до Сибири.
           </p>
         </div>
 
-        <WorldMap
-          experiences={experiences}
-          selectedExperience={selectedExperience}
-          onSelectExperience={setSelectedExperience}
-        />
+        <div className="w-full px-4 md:px-8 lg:px-16">
+          <WorldMap
+            experiences={experiences}
+            selectedExperience={selectedExperience}
+            onExperienceSelect={setSelectedExperience}
+          />
+        </div>
       </section>
 
       <section id="narrative" className="relative py-20 md:py-32 px-4 animate-on-scroll">
@@ -434,10 +450,10 @@ export default function VerdantPage() {
             <div className="max-w-[720px]">
               <div className="text-[10px] md:text-xs uppercase tracking-[0.15em] text-[#A7ABB3] mb-6 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-pink-400 animate-pulse" />
-                ТЕХНОЛОГИИ СОХРАНЕНИЯ
+                НАПРАВЛЕНИЯ РАБОТЫ
               </div>
               <h2 className="font-serif text-[36px] leading-[1.15] md:text-[56px] md:leading-[1.1] font-medium mb-8 text-balance">
-                Каждая экосистема{" "}
+                Каждая инициатива{" "}
                 <span
                   className="inline-block"
                   style={{
@@ -451,7 +467,7 @@ export default function VerdantPage() {
                 </span>
               </h2>
               <p className="text-[#A7ABB3] text-base md:text-lg leading-relaxed mb-12">
-                Наши спутниковые и ИИ-технологии отслеживают биоразнообразие, выявляют незаконные вырубки, анализируют паттерны обезлесения и оповещают команды в реальном времени. Сохранение со скоростью, которую требует природа.
+                Мы развиваем добровольчество, поддерживаем молодёжные проекты, оказываем социальную помощь и укрепляем гражданское общество. Каждый проект — это реальные изменения в жизни людей.
               </p>
 
               <div className="md:hidden mb-8">
@@ -465,7 +481,7 @@ export default function VerdantPage() {
                         "/deforestation-detect.png",
                       ][selectedFeature] || "/placeholder.svg"
                     }
-                    alt="Превью функции"
+                    alt="Превью направления"
                     className={`w-full h-full object-cover rounded-[20px] transition-opacity duration-300 ${
                       imageFade ? "opacity-100" : "opacity-0"
                     }`}
@@ -476,27 +492,27 @@ export default function VerdantPage() {
               <div className="space-y-6">
                 {[
                   {
-                    title: "Дроны-разведчики",
-                    desc: "Аэросъемка для учета дикой природы и видового разнообразия",
-                    icon: CustomDroneIcon,
+                    title: "Добровольчество",
+                    desc: "Вовлекаем граждан в волонтёрскую деятельность и развиваем культуру помощи",
+                    iconName: "Heart",
                     image: "/drone.png",
                   },
                   {
-                    title: "Мониторинг 24/7",
-                    desc: "Круглосуточное спутниковое наблюдение с мгновенными оповещениями",
-                    icon: Satellite,
+                    title: "Молодёжные проекты",
+                    desc: "Программа «Достигай» — раскрываем потенциал молодых людей по всей России",
+                    iconName: "Star",
                     image: "/real-time-satellite.png",
                   },
                   {
-                    title: "Учет биоразнообразия",
-                    desc: "Картирование и мониторинг популяций животных по регионам",
-                    icon: PawPrint,
+                    title: "Социальная поддержка",
+                    desc: "Помогаем уязвимым категориям населения через партнёрские программы",
+                    iconName: "Users",
                     image: "/biodiversity-tracking.png",
                   },
                   {
-                    title: "Защита от вырубки",
-                    desc: "Обнаружение угроз до их эскалации",
-                    icon: Trees,
+                    title: "Гражданские инициативы",
+                    desc: "Развиваем местные сообщества и поддерживаем НКО-сектор в регионах",
+                    iconName: "Award",
                     image: "/deforestation-detect.png",
                   },
                 ].map((feature, i) => (
@@ -514,7 +530,9 @@ export default function VerdantPage() {
                       selectedFeature === i ? "border border-white/20" : "border border-white/10"
                     }`}
                   >
-                    <feature.icon
+                    <Icon
+                      name={feature.iconName}
+                      fallback="CircleAlert"
                       className={`w-6 h-6 flex-shrink-0 mt-1 transition-colors ${
                         selectedFeature === i ? "text-green-400" : "text-green-500/60"
                       }`}
@@ -536,22 +554,10 @@ export default function VerdantPage() {
             <div className="hidden md:flex items-stretch justify-center">
               <div className="relative w-full h-full min-h-[500px]">
                 {[
-                  {
-                    title: "Дроны-разведчики",
-                    image: "/drone.png",
-                  },
-                  {
-                    title: "Мониторинг 24/7",
-                    image: "/real-time-satellite.png",
-                  },
-                  {
-                    title: "Учет биоразнообразия",
-                    image: "/biodiversity-tracking.png",
-                  },
-                  {
-                    title: "Защита от вырубки",
-                    image: "/deforestation-detect.png",
-                  },
+                  { title: "Добровольчество", image: "/drone.png" },
+                  { title: "Молодёжные проекты", image: "/real-time-satellite.png" },
+                  { title: "Социальная поддержка", image: "/biodiversity-tracking.png" },
+                  { title: "Гражданские инициативы", image: "/deforestation-detect.png" },
                 ].map((feature, i) => {
                   const positionInStack = (i - selectedFeature + 4) % 4
                   const isActive = positionInStack === 0
@@ -603,50 +609,47 @@ export default function VerdantPage() {
               ?
             </h2>
             <p className="text-[#A7ABB3] text-sm md:text-base max-w-[600px] mx-auto leading-relaxed">
-              Все, что нужно знать о VERDANT и нашей платформе для экологического мониторинга.
+              Всё, что нужно знать об АНО «Ситис» и программе «Достигай».
             </p>
           </div>
 
           <div className="space-y-4">
             {[
               {
-                question: "Как работает спутниковый мониторинг VERDANT?",
+                question: "Что такое АНО Центр Общественных Инициатив «Ситис»?",
                 answer:
-                  "Наша платформа использует сеть спутников в сочетании с ИИ-алгоритмами для анализа лесного покрова в реальном времени. Мы обнаруживаем изменения площадью от 0,5 гектара в течение 24 часов, что позволяет оперативно реагировать на угрозы: незаконные вырубки или лесные пожары.",
+                  "«Ситис» — автономная некоммерческая организация, которая объединяет граждан, активистов и добровольцев для реализации социально значимых проектов. Мы работаем в сфере добровольчества, молодёжной политики и развития гражданского общества.",
               },
               {
-                question: "Какие регионы охватывает VERDANT?",
+                question: "Что такое программа «Достигай»?",
                 answer:
-                  "VERDANT сейчас ведет мониторинг более 2,4 миллиона гектаров на пяти континентах: тропические леса Амазонии, бассейн Конго, леса Борнео, сибирская тайга и тихоокеанский северо-запад Америки. Мы постоянно расширяем охват для защиты новых экосистем.",
+                  "«Достигай» — флагманская молодёжная программа организации. Она помогает молодым людям раскрыть свой потенциал, найти наставников и реализовать собственные идеи. Участники получают поддержку, обучение и сеть единомышленников.",
               },
               {
-                question: "Насколько точна система обнаружения угроз?",
+                question: "Как стать участником или волонтёром?",
                 answer:
-                  "Наша система обнаружения угроз на базе ИИ достигает точности 99,4%. Мы используем модели машинного обучения, обученные на миллионах спутниковых снимков, чтобы отличать естественные изменения от антропогенного обезлесения или незаконной деятельности.",
+                  "Стать частью команды просто: оставьте заявку на сайте или напишите нам напрямую. Мы работаем как с индивидуальными волонтёрами, так и с организациями, готовыми к партнёрству.",
               },
               {
-                question: "Можно ли интегрировать VERDANT с существующими системами?",
+                question: "В каких регионах работает организация?",
                 answer:
-                  "Да, VERDANT предоставляет полноценный API для интеграции с существующими системами управления природоохранной деятельностью, ГИС-платформами и системами оповещения. Наша документация содержит подробные руководства по внедрению.",
+                  "Сегодня «Ситис» реализует проекты в 18 регионах России — от Москвы и Санкт-Петербурга до Новосибирска и Казани. Мы постоянно расширяем географию присутствия.",
               },
               {
-                question: "Какова модель ценообразования VERDANT?",
+                question: "Как можно поддержать организацию?",
                 answer:
-                  "Мы предлагаем многоуровневое ценообразование в зависимости от площади мониторинга и набора функций. Некоммерческие природоохранные организации могут претендовать на льготные тарифы или гранты. Свяжитесь с нами для расчета индивидуального предложения.",
-              },
-              {
-                question: "Как я могу помочь в сохранении лесов через VERDANT?",
-                answer:
-                  "Есть несколько способов: пожертвование на мониторинг незащищенных территорий, волонтерство в командах наземной верификации или корпоративное партнерство. Каждый вклад помогает защищать критически важные экосистемы.",
+                  "Поддержать нас можно несколькими способами: стать волонтёром, выступить партнёром, помочь в организации мероприятий или сделать пожертвование. Любая помощь важна — мы рады всем, кто разделяет наши ценности.",
               },
             ].map((faq, i) => (
               <div
                 key={i}
-                className="border border-white/10 rounded-xl overflow-hidden transition-all duration-300 hover:border-white/20"
+                className={`border rounded-[16px] transition-all duration-300 ${
+                  openFaqIndex === i ? "border-white/20 bg-white/5" : "border-white/10 bg-transparent"
+                }`}
               >
                 <button
                   onClick={() => setOpenFaqIndex(openFaqIndex === i ? null : i)}
-                  className="w-full flex items-center justify-between p-6 text-left"
+                  className="w-full text-left px-6 py-5 flex items-center justify-between gap-4"
                 >
                   <span className="text-base md:text-lg font-medium pr-4">{faq.question}</span>
                   <ChevronDown
@@ -682,18 +685,18 @@ export default function VerdantPage() {
         <div className="max-w-[800px] w-full mx-auto text-center relative z-10">
           <div className="inline-flex items-center gap-2 glass-pill px-4 py-2 rounded-full mb-8 text-xs md:text-sm text-[#A7ABB3]">
             <span className="w-1.5 h-1.5 rounded-full bg-pink-400 animate-pulse" />
-            Спасем планету
+            Вместе — сильнее
           </div>
 
           <h2 className="font-serif text-[40px] leading-[1.15] md:text-[64px] md:leading-[1.1] font-medium mb-6 text-balance">
-            Присоединяйтесь к глобальному движению
+            Присоединяйтесь к движению «Достигай»
           </h2>
           <p className="text-[#A7ABB3] text-base md:text-lg mb-10 leading-relaxed max-w-[560px] mx-auto">
-            Вместе мы строим устойчивое будущее. Начните защищать леса уже сегодня.
+            Станьте частью команды неравнодушных людей. Вместе мы делаем Россию лучше — один проект за раз.
           </p>
 
           <Button className="glass-button text-base rounded-full bg-white/5 border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-300 text-white px-8 py-6 md:text-base">
-            Начать сейчас
+            Оставить заявку
           </Button>
         </div>
       </section>
@@ -701,20 +704,19 @@ export default function VerdantPage() {
       <footer className="relative px-4 border-t border-white/5 py-8">
         <div className="max-w-[1120px] w-full mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-12">
-            {/* Brand Column */}
             <div className="flex flex-col gap-4">
-              <div className="text-lg font-semibold font-mono">VERDANT</div>
+              <div className="text-lg font-semibold font-mono">СИТИС</div>
               <p className="text-xs text-[#A7ABB3] leading-relaxed">
-                Защита лесов по всему миру с помощью мониторинга в реальном времени и ИИ-технологий.
+                АНО Центр Общественных Инициатив «Ситис» — развиваем гражданское общество и поддерживаем людей по всей России.
               </p>
               <div className="flex items-center gap-4 mt-2">
                 <a
                   href="#"
                   className="text-[#A7ABB3] hover:text-[#F2F3F5] transition-colors"
-                  aria-label="X (Twitter)"
+                  aria-label="ВКонтакте"
                 >
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.408 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.864 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.762-.491h1.744c.525 0 .643.271.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.78 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.491-.085.745-.576.745z" />
                   </svg>
                 </a>
                 <a
@@ -727,44 +729,44 @@ export default function VerdantPage() {
                 <a
                   href="#"
                   className="text-[#A7ABB3] hover:text-[#F2F3F5] transition-colors"
-                  aria-label="Instagram"
+                  aria-label="Telegram"
                 >
-                  <Instagram className="w-4 h-4" />
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                  </svg>
                 </a>
               </div>
             </div>
 
-            {/* Product Menu */}
             <div className="flex flex-col gap-4">
-              <div className="text-xs uppercase tracking-[0.15em] text-[#F2F3F5] font-semibold mb-2">Продукт</div>
-              <div className="flex flex-col gap-3">
-                <a href="#" className="text-sm text-[#A7ABB3] hover:text-[#F2F3F5] transition-colors">
-                  Возможности
-                </a>
-                <a href="#" className="text-sm text-[#A7ABB3] hover:text-[#F2F3F5] transition-colors">
-                  Тарифы
-                </a>
-                <a href="#" className="text-sm text-[#A7ABB3] hover:text-[#F2F3F5] transition-colors">
-                  Документация
-                </a>
-                <a href="#" className="text-sm text-[#A7ABB3] hover:text-[#F2F3F5] transition-colors">
-                  API
-                </a>
-              </div>
-            </div>
-
-            {/* Company Menu */}
-            <div className="flex flex-col gap-4">
-              <div className="text-xs uppercase tracking-[0.15em] text-[#F2F3F5] font-semibold mb-2">Компания</div>
+              <div className="text-xs uppercase tracking-[0.15em] text-[#F2F3F5] font-semibold mb-2">Организация</div>
               <div className="flex flex-col gap-3">
                 <a href="#" className="text-sm text-[#A7ABB3] hover:text-[#F2F3F5] transition-colors">
                   О нас
                 </a>
                 <a href="#" className="text-sm text-[#A7ABB3] hover:text-[#F2F3F5] transition-colors">
-                  Блог
+                  Наши проекты
                 </a>
                 <a href="#" className="text-sm text-[#A7ABB3] hover:text-[#F2F3F5] transition-colors">
-                  Карьера
+                  Команда
+                </a>
+                <a href="#" className="text-sm text-[#A7ABB3] hover:text-[#F2F3F5] transition-colors">
+                  Отчётность
+                </a>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-4">
+              <div className="text-xs uppercase tracking-[0.15em] text-[#F2F3F5] font-semibold mb-2">Участие</div>
+              <div className="flex flex-col gap-3">
+                <a href="#" className="text-sm text-[#A7ABB3] hover:text-[#F2F3F5] transition-colors">
+                  Стать волонтёром
+                </a>
+                <a href="#" className="text-sm text-[#A7ABB3] hover:text-[#F2F3F5] transition-colors">
+                  Программа «Достигай»
+                </a>
+                <a href="#" className="text-sm text-[#A7ABB3] hover:text-[#F2F3F5] transition-colors">
+                  Партнёрство
                 </a>
                 <a href="#" className="text-sm text-[#A7ABB3] hover:text-[#F2F3F5] transition-colors">
                   Контакты
@@ -772,10 +774,9 @@ export default function VerdantPage() {
               </div>
             </div>
 
-            {/* Newsletter Subscription */}
             <div className="flex flex-col gap-4">
-              <div className="text-xs uppercase tracking-[0.15em] text-[#F2F3F5] font-semibold mb-2">Рассылка</div>
-              <p className="text-xs text-[#A7ABB3] mb-3">Получайте новости об экологических инициативах.</p>
+              <div className="text-xs uppercase tracking-[0.15em] text-[#F2F3F5] font-semibold mb-2">Новости</div>
+              <p className="text-xs text-[#A7ABB3] mb-3">Получайте новости о наших инициативах и проектах.</p>
               <div className="flex flex-col gap-2">
                 <input
                   type="email"
@@ -789,9 +790,8 @@ export default function VerdantPage() {
             </div>
           </div>
 
-          {/* Footer Bottom */}
           <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#A7ABB3]">
-            <div>2025 VERDANT. Все права защищены.</div>
+            <div>2025 АНО ЦОИ «Ситис». Все права защищены.</div>
             <div className="flex gap-6">
               <a href="#" className="hover:text-[#F2F3F5] transition-colors">
                 Политика конфиденциальности
@@ -800,7 +800,7 @@ export default function VerdantPage() {
                 Условия использования
               </a>
               <a href="#" className="hover:text-[#F2F3F5] transition-colors">
-                Настройки cookie
+                Реквизиты
               </a>
             </div>
           </div>
