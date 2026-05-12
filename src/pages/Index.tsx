@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Users, Heart, Award, Menu, X, Youtube, Instagram, ChevronDown } from "lucide-react"
+import { Menu, X, Youtube, ChevronDown } from "lucide-react"
 import { AnimatedText } from "@/components/animated-text"
 import { WorldMap } from "@/components/world-map"
 import { experiences } from "@/lib/experience-data"
@@ -187,12 +186,6 @@ export default function SitisPage() {
               >
                 Вопросы
               </button>
-              <button
-                onClick={() => scrollToSection("cta")}
-                className="text-sm text-[#A7ABB3] hover:text-[#F2F3F5] transition-colors duration-300"
-              >
-                Участвовать
-              </button>
             </nav>
 
             <button
@@ -232,12 +225,6 @@ export default function SitisPage() {
               className="font-serif text-5xl md:text-7xl font-light text-[#F2F3F5] hover:text-pink-400 transition-colors duration-300"
             >
               Вопросы
-            </button>
-            <button
-              onClick={() => scrollToSection("cta")}
-              className="font-serif text-5xl md:text-7xl font-light text-[#F2F3F5] hover:text-pink-400 transition-colors duration-300"
-            >
-              Участвовать
             </button>
           </div>
         </div>
@@ -290,14 +277,7 @@ export default function SitisPage() {
             >
               АНО Центр Общественных Инициатив «Ситис» — объединяем людей, развиваем гражданское общество и реализуем социальные проекты по всей России.
             </p>
-            <div className="stagger-reveal" style={{ animationDelay: "270ms" }}>
-              <Button
-                onClick={() => scrollToSection("cta")}
-                className="glass-button px-8 py-6 text-base rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 text-white"
-              >
-                Присоединиться
-              </Button>
-            </div>
+
           </div>
 
           <div className="mt-12 md:mt-20 stagger-reveal" style={{ animationDelay: "360ms" }} ref={dashboardRef}>
@@ -668,36 +648,6 @@ export default function SitisPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section
-        id="cta"
-        className="relative py-24 md:py-40 px-4 animate-on-scroll overflow-hidden pt-0"
-        style={{
-          backgroundImage: `url('/earth-cta.png')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0B0C0F] via-[#0B0C0F]/60 to-transparent pointer-events-none" />
-        <div className="max-w-[800px] w-full mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 glass-pill px-4 py-2 rounded-full mb-8 text-xs md:text-sm text-[#A7ABB3]">
-            <span className="w-1.5 h-1.5 rounded-full bg-pink-400 animate-pulse" />
-            Вместе — сильнее
-          </div>
-
-          <h2 className="font-serif text-[40px] leading-[1.15] md:text-[64px] md:leading-[1.1] font-medium mb-6 text-balance">
-            Присоединяйтесь к движению «Достигай»
-          </h2>
-          <p className="text-[#A7ABB3] text-base md:text-lg mb-10 leading-relaxed max-w-[560px] mx-auto">
-            Станьте частью команды неравнодушных людей. Вместе мы делаем Россию лучше — один проект за раз.
-          </p>
-
-          <Button className="glass-button text-base rounded-full bg-white/5 border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-300 text-white px-8 py-6 md:text-base">
-            Оставить заявку
-          </Button>
         </div>
       </section>
 
